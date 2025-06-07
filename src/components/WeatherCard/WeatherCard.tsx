@@ -1,16 +1,27 @@
 import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import './WeatherCard.scss';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import CloudIcon from '@mui/icons-material/Cloud';
 import { Weather } from '../../data/weather';
+import AcUnitIcon from '@mui/icons-material/AcUnit'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import WhatshotIcon from '@mui/icons-material/Whatshot'
 
 interface WeatherCardProps {
     data: Weather;
 }
 
 const WeatherCard = (props: WeatherCardProps) => {
+    const getFeelsLikeIcon = (feelsLike: number) => {
+    if (feelsLike <= 20) {
+      return <AcUnitIcon sx={{ fontSize: 40, color: '#2196f3' }} />
+    } else if (feelsLike < 30) {
+      return <WbSunnyIcon sx={{ fontSize: 40, color: '#fbc02d' }} />
+    } else {
+      return <WhatshotIcon sx={{ fontSize: 40, color: '#d84315' }} />
+    }
+  };
+
   return (
-    <Card sx={{ width: 360, height: 260,justifyContent: 'space-between', backgroundColor: '#fff', boxShadow: 3, }}>
+    <Card sx={{ width: 360, height: 230,justifyContent: 'space-between', backgroundColor: '#fff', boxShadow: 3, }}>
       <CardContent sx={{ padding: 3 }}>
         <Box display="flex" justifyContent="space-between" gap={2}>
           <Box>
@@ -21,10 +32,10 @@ const WeatherCard = (props: WeatherCardProps) => {
               {props.data.description}
             </Typography>
           </Box>
-            <WbSunnyIcon sx={{ fontSize: 60, color: '#fbc02d' }} />
+            {getFeelsLikeIcon(props.data.feels_like)}
         </Box>
-        <Box display="flex" justifyContent="space-between" mt={3}>
-          <Box textAlign="center">
+        <Box display="flex" justifyContent="space-between" mt={5}>
+          <Box textAlign="center" >
             <Typography variant="h6">טמפ' נמדדת</Typography>
             <Typography variant="h5">{Math.floor(props.data.temp)}°C</Typography>
           </Box>
