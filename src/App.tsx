@@ -7,7 +7,6 @@ function App() {
   return (
     <div className='App'>
       <div>
-        <h1>תחזית מסביב לעולם</h1>
         <AllCitiesWeather></AllCitiesWeather>
       </div>
     </div>
