@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import WeatherCard from './components/WeatherCard/WeatherCard';
+import AllCitiesWeather from './components/AllCitiesWeather/AllCitiesWeather';
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className='App'>
       <div>
         <h1>תחזית מסביב לעולם</h1>
-        <WeatherCard></WeatherCard>
+        <AllCitiesWeather></AllCitiesWeather>
       </div>
     </div>
   );
